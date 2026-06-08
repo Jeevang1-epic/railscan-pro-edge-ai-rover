@@ -1,0 +1,12 @@
+path: .
+train: images/train
+val: images/val
+test: images/test
+
+nc: 5
+names:
+  0: visible_crack
+  1: surface_damage
+  2: missing_fastener
+  3: foreign_object
+  4: unsafe_track_region

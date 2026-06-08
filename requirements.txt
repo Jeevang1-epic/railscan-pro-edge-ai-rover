@@ -1,0 +1,6 @@
+PyYAML
+pytest
+pyserial
+numpy
+opencv-python
+onnxruntime

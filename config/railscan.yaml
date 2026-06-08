@@ -1,0 +1,78 @@
+camera:
+  source: 0
+  width: 640
+  height: 480
+  model_input_size: 320
+  synthetic: false
+
+serial:
+  port: "COM3"
+  baudrate: 115200
+  stop_command: "S"
+  ack_timeout_ms: 500
+  expected_ack: "EMERGENCY_STOP_LATCHED"
+
+model:
+  path: "models/railscan_yolo.onnx"
+  input_size: 320
+  confidence_threshold: 0.50
+  high_confidence_threshold: 0.80
+  providers:
+    - CPUExecutionProvider
+  mock: false
+  danger_classes:
+    - visible_crack
+    - surface_damage
+    - missing_fastener
+    - foreign_object
+    - unsafe_track_region
+  class_names:
+    - visible_crack
+    - surface_damage
+    - missing_fastener
+    - foreign_object
+    - unsafe_track_region
+
+postprocessing:
+  iou_threshold: 0.45
+  max_detections: 100
+  has_objectness: false
+  input_box_format: "cxcywh"
+
+training:
+  data: "datasets/railscan_v1/data.yaml"
+  base_model: "yolo11n.pt"
+  imgsz: 320
+  epochs: 50
+  batch: 16
+  project: "runs/train"
+  name: "railscan_yolo"
+  device: "auto"
+
+export:
+  weights: "runs/train/railscan_yolo/weights/best.pt"
+  format: "onnx"
+  output: "models/railscan_yolo.onnx"
+  imgsz: 320
+  opset: 12
+
+runtime:
+  frames: 10
+  synthetic: true
+  mock_inference: true
+  serial_dry_run: true
+  enable_real_stop: false
+  confirm_wheels_lifted: false
+  simulate_defect_frame:
+  output_dir: "runs/reports"
+
+decision:
+  # Decision engine smoothing defaults. Serial STOP integration comes later.
+  smoothing_enabled: true
+  required_hits: 2
+  window_size: 3
+
+logging:
+  output_dir: "runs/logs"
+  save_csv: true
+  save_frames_on_detection: true
