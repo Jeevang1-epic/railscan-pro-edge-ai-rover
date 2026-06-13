@@ -40,3 +40,8 @@ dist/
 runs/
 .venv/
 env/
+
+# Landing page generated files
+landing/node_modules/
+landing/dist/
+landing/.vite/
