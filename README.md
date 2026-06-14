@@ -313,3 +313,35 @@ The package contains a manifest and selected review documents. It excludes model
 4. Validate real camera capture.
 5. Upload Arduino firmware and validate STOP with rover wheels lifted.
 6. Record real validation results in `docs/demo-report-template.md`.
+
+
+---
+
+## 👥 Team Sentinals95
+
+<p align="center">
+  <b>RailScan Pro: Contactless Track Monitoring</b><br/>
+  <sub>Built for Makers Conclave 2026 · Problem Statement MC-15</sub>
+</p>
+
+<p align="center">
+  🚆 ━━━━━━━━━━━━━━━━━━━━━━━ <b>Edge-AI Railway Inspection Rover</b> ━━━━━━━━━━━━━━━━━━━━━━━ 🚆
+</p>
+
+| Name | NIAT ID | Institution | Branch | Role |
+|---|---|---|---|---|
+| **Puttala Jeevan Kumar** | `N25H01A0181` | NIAT (CDU) | CSE (AI/ML) | Team Leader · Software Architecture · Edge-AI Pipeline |
+| **Syed Mazhar Ali** | `N25H01A0135` | NIAT (CDU) | CSE (AI/ML) | Hardware Prototype · Arduino/L298N Integration |
+| **Majeti Harshit** | `N25H01A0170` | NIAT (CDU) | CSE (AI/DS) | Prototype Support · Documentation |
+| **Syed Mohammed Mustajab Abedi** | `N25H01A1051` | NIAT (CDU) | CSE (AI/DS) | Prototype Support · Validation |
+
+### Project Contribution Summary
+
+- **System Design:** Split-logic architecture with laptop/edge-device vision and Arduino motor control.
+- **Software:** Camera pipeline, ONNX-ready inference, detection adapter, safety decision engine, and safe runtime demo.
+- **Hardware:** 4WD rover chassis, Arduino UNO, L298N motor driver, DC gear motors, and serial STOP pathway.
+- **Safety:** Real STOP disabled by default; dry-run validation and explicit safety flags used before hardware testing.
+
+<p align="center">
+  <i>“Detect locally. Decide safely. Stop responsibly.”</i>
+</p>
